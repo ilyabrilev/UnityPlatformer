@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             }
 
             //jump
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1))
             {
                 this.Jump();
             }

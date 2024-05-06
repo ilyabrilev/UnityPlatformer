@@ -16,13 +16,14 @@ public class RangedScript : MonoBehaviour
     [Header("Ranged Attack")]
     [SerializeField] private Transform firepoint;
     [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private AudioClip fireballSound;
 
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
 
     private float cooldownTimer = Mathf.Infinity;
     private Animator anim;
-    //private Health playerHealth;
+    private Health playerHealth;
     private EnemyPatrol enemyPatrol;
 
     private void Awake()
@@ -38,7 +39,7 @@ public class RangedScript : MonoBehaviour
         if (PlayerInSight())
         {
             //attack if the player in sight
-            if (cooldownTimer >= attackCooldown)
+            if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0)
             {
                 //Attack
                 cooldownTimer = 0;
@@ -54,6 +55,7 @@ public class RangedScript : MonoBehaviour
 
     private void RangedAttack()
     {
+        SoundManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
         //shoot projectile
         fireballs[FindFireball()].transform.position = firepoint.position;
@@ -76,6 +78,11 @@ public class RangedScript : MonoBehaviour
     {
         RaycastHit2D hit = Physics2D.BoxCast(GetFOVOrigin(),
             GetFOVSize(), 0, Vector2.left, 0, playerLayer);
+        
+        if (hit.collider != null)
+        {
+            playerHealth = hit.collider.GetComponent<Health>();
+        }
 
         return hit.collider != null;
     }

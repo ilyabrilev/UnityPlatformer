@@ -9,6 +9,8 @@ public class Spikehead : EnemyDamage
     [SerializeField] private float range;
     [SerializeField] private float checkDelay;
     [SerializeField] private LayerMask playerLayer;
+    [Header("SFX")]
+    [SerializeField] private AudioClip impactSound;
 
     private float checkTimer;
     private Vector2 destination;
@@ -71,6 +73,7 @@ public class Spikehead : EnemyDamage
     {
         base.OnTriggerEnter2D(collision);
         //Stop spikehead
+        SoundManager.instance.PlaySound(impactSound);
         Stop();
     }
 }

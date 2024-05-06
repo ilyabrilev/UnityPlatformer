@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
 
+    [Header ("Audio")]
+    [SerializeField] private AudioClip jumpSound;
+
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxColider;
@@ -65,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(1))
             {
                 this.Jump();
+                if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1)) && this.isGrounded())
+                {
+                    SoundManager.instance.PlaySound(jumpSound);
+                }
             }
         }
         else

@@ -9,6 +9,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private float range;
     [SerializeField] private float damage;
+    [SerializeField] private AudioClip swordSound;
 
     [Header("Collider Parameters")]
     [SerializeField] private float colliderDistance;    
@@ -35,11 +36,12 @@ public class MeleeEnemy : MonoBehaviour
         if (PlayerInSight())
         {
             //attack if the player in sight
-            if (cooldownTimer >= attackCooldown)
+            if (cooldownTimer >= attackCooldown && playerHealth.currentHealth > 0)
             {
                 //Attack
                 cooldownTimer = 0;
                 anim.SetTrigger("MeleeAttack");
+                SoundManager.instance.PlaySound(swordSound);
             }
         }
 

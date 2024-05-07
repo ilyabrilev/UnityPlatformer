@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8077245209028804179}
   - component: {fileID: 8414269490953620605}
   - component: {fileID: 5009802345450167285}
+  - component: {fileID: 5424504171650652479}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -176,7 +177,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 10
-  vertivalSpeed: 20
+  verticalSpeed: 20
+  coyoteTime: 0.25
+  extraJumps: 1
+  wallJumpX: 1500
+  wallJumpY: 750
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -251,6 +256,19 @@ MonoBehaviour:
   - {fileID: 4352703004402833528}
   deathSound: {fileID: 8300000, guid: d470695cc69445649b521fea27ac2fd6, type: 3}
   hurtSound: {fileID: 8300000, guid: 872d7437ba99b374d8369e55054fd277, type: 3}
+--- !u!114 &5424504171650652479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975022599513130843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa38f19de2403a142a1c7df68c1c0b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointSound: {fileID: 8300000, guid: 98eaec3b47107994b94401f3b133e2b5, type: 3}
 --- !u!1 &8399127863462070722
 GameObject:
   m_ObjectHideFlags: 0

@@ -49,22 +49,16 @@ public class Health : MonoBehaviour
         {
             if (!dead)
             {
-                anim.SetTrigger("Die");
-                SoundManager.instance.PlaySound(deathSound);
-
-                //Player
-                if (GetComponent<PlayerMovement>() != null)
-                {
-                    GetComponent<PlayerMovement>().enabled = false;
-                }                
-
-                //Enemy
+                //Deactivate all attached behaviour
                 foreach (Behaviour component in components)
                 {
                     component.enabled = false;
                 }
+                anim.SetBool("Grounded", true);
+                anim.SetTrigger("Die");
 
                 dead = true;
+                SoundManager.instance.PlaySound(deathSound);
             }            
         }
     }
@@ -94,5 +88,21 @@ public class Health : MonoBehaviour
     private void Deactivate()
     {
         gameObject.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        AddHealth(startingHealth);
+        anim.ResetTrigger("Die");
+        anim.Play("Idle");
+        StartCoroutine(Invulerability());
+
+        //Deactivate all attached behaviour
+        foreach (Behaviour component in components)
+        {
+            component.enabled = true;
+        }
+
+        dead = false;
     }
 }

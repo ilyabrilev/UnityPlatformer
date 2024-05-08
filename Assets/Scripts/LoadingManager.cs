@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadingManager : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SceneManager.LoadScene(1);
-        }
+        //MusicManager.instance.PlayMusic("Main Theme");
     }
 }

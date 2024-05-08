@@ -44,7 +44,7 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("Hurt");
             StartCoroutine(Invulerability());
-            SoundManager.instance.PlaySound(hurtSound);
+            SFXManager.instance.PlaySound(hurtSound);
         } else
         {
             if (!dead)
@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
                 anim.SetTrigger("Die");
 
                 dead = true;
-                SoundManager.instance.PlaySound(deathSound);
+                SFXManager.instance.PlaySound(deathSound);
             }            
         }
     }

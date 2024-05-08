@@ -14,7 +14,7 @@ public class HealthCollectable : MonoBehaviour
         {
             collision.GetComponent<Health>().AddHealth(healthValue);
             gameObject.SetActive(false);
-            SoundManager.instance.PlaySound(pickupSound);
+            SFXManager.instance.PlaySound(pickupSound);
         }
     }
 }

@@ -8,12 +8,12 @@ public class PlayerRespawn : MonoBehaviour
     [SerializeField] private AudioClip checkpointSound;
     private Transform currentCheckpoint;
     private Health playerHealth;
-    private UIManager uiManager;
+    private GameUIManager uiManager;
 
     private void Awake()
     {
         playerHealth = GetComponent<Health>();
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = FindObjectOfType<GameUIManager>();
     }
 
     public void RespawnPlayer()
@@ -40,7 +40,7 @@ public class PlayerRespawn : MonoBehaviour
         if (collision.transform.tag == "Checkpoint")
         {
             currentCheckpoint = collision.transform;    // store the checkpoint
-            SoundManager.instance.PlaySound(checkpointSound);
+            SFXManager.instance.PlaySound(checkpointSound);
             collision.GetComponent<Collider2D>().enabled = false; //Deactivate checkpoint
             collision.GetComponent<Animator>().SetTrigger("Appear");
         }

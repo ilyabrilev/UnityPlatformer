@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        SoundManager.instance.PlaySound(jumpSound);
+        SFXManager.instance.PlaySound(jumpSound);
 
         if (onWall())
         {

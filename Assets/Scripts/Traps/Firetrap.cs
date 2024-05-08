@@ -67,7 +67,7 @@ public class Firetrap : MonoBehaviour
         spriteRenderer.color = Color.white;
         active = true;
         anim.SetBool("Activated", true);
-        SoundManager.instance.PlaySound(firetrapSound);
+        SFXManager.instance.PlaySound(firetrapSound);
         yield return new WaitForSeconds(activeTime);
 
         // deactivation

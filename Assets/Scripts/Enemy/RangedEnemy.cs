@@ -55,7 +55,7 @@ public class RangedScript : MonoBehaviour
 
     private void RangedAttack()
     {
-        SoundManager.instance.PlaySound(fireballSound);
+        SFXManager.instance.PlaySound(fireballSound);
         cooldownTimer = 0;
         //shoot projectile
         fireballs[FindFireball()].transform.position = firepoint.position;

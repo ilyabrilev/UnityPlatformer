@@ -26,6 +26,7 @@ public class PauseActions : MonoBehaviour
     public void MainMenu()
     {
         SFXManager.instance.PlaySound(interactSound);
+        pauseScreen.OnEscapePress();
         MusicManager.instance.PlayMusic("Menu Theme", 1, 0.5f);
         SceneManager.LoadScene("_MainMenu");
     }

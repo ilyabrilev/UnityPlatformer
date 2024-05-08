@@ -224,6 +224,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2639196513725873415, guid: b1edc0c53b195d54288c9aaa481c5885, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 186dd6065458a294e9b4d2ca40161d63, type: 2}
+    - target: {fileID: 2639196513725873415, guid: b1edc0c53b195d54288c9aaa481c5885, type: 3}
       propertyPath: musicLibrary
       value: 
       objectReference: {fileID: 1529749448}
@@ -251,6 +255,10 @@ PrefabInstance:
       propertyPath: tracks.Array.data[2].trackName
       value: Dragon Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 8880533369068051215, guid: b1edc0c53b195d54288c9aaa481c5885, type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: 186dd6065458a294e9b4d2ca40161d63, type: 2}
     - target: {fileID: 8880533369068051215, guid: b1edc0c53b195d54288c9aaa481c5885, type: 3}
       propertyPath: soundSource
       value: 

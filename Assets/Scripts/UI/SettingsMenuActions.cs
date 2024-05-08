@@ -17,39 +17,34 @@ public class SettingsMenuActions : MonoBehaviour
     [SerializeField] private GameObject previousMenu;
     [SerializeField] private GameObject currentMenu;
 
-    private void Start()
+    void OnEnable()
     {
         LoadVolume();
     }
 
     public void UpdateMusicVolume(float volume)
     {
-        mixer.SetFloat("MusicVolume", volume);
+        MusicManager.instance.UpdateVolume(volume);
     }
 
     public void UpdateSFXVolume(float volume)
     {
-        mixer.SetFloat("SFXVolume", volume);
+        SFXManager.instance.UpdateVolume(volume);
     }
 
     public void SaveVolume()
     {
-        mixer.GetFloat("MusicVolume", out float musicVolume);
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-
-        mixer.GetFloat("SFXVolume", out float sfxVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        MusicManager.instance.SaveVolume();
+        SFXManager.instance.SaveVolume();
     }
 
     public void LoadVolume()
     {
-        float musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        float musicVolume = MusicManager.instance.GetVolume();
         musicSlider.value = musicVolume;
-        UpdateMusicVolume(musicVolume);
 
-        float sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        float sfxVolume = SFXManager.instance.GetVolume();
         sfxSlider.value = sfxVolume;
-        UpdateSFXVolume(sfxVolume);
     }
 
     public void Back()

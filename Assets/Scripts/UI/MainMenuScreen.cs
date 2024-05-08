@@ -7,12 +7,10 @@ using UnityEngine.SceneManagement;
 public class MainMenuScreen : MonoBehaviour
 {
     void Start()
-    {      
-    }
-
-    private void Awake()
     {
-        StartCoroutine(StartMenu());
+        //MusicManager.instance.LoadVolume();
+        //SFXManager.instance.LoadVolume();
+        MusicManager.instance.PlayMusic("Menu Theme", 2);
     }
 
     IEnumerator StartMenu()

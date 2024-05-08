@@ -7,6 +7,7 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] private GameObject pauseScreenObject;
     [SerializeField] private GameObject mainPauseMenu;
     [SerializeField] private GameObject settingsPauseMenu;
+    [SerializeField] private GameObject player;
     
     public void SetActive(bool active)
     {
@@ -22,14 +23,9 @@ public class PauseScreen : MonoBehaviour
             settingsPauseMenu.SetActive(false);
         }
 
-        if (status)
-        {
-            Time.timeScale = 0;
-        }
-        else
-        {
-            Time.timeScale = 1;
-        }
+        Time.timeScale = status ? 0.0f : 1.0f;
+        player.GetComponent<PlayerAttack>().enabled = !status;
+        player.GetComponent<PlayerMovement>().enabled = !status;
     }
 
     public void OnEscapePress()

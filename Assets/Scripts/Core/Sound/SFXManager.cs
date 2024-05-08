@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SFXManager : MonoBehaviour
+public class SFXManager : AbstractAudioManager
 {
     public static SFXManager instance { get; private set; }
     [SerializeField] private AudioSource soundSource;
+    public override string SettingName
+    {
+        get
+        {
+            return "SFXVolume";
+        }
+    }
 
     private void Awake()
     { 
@@ -18,8 +25,11 @@ public class SFXManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
-        ChangeSoundVolume(0);
+    private void Start()
+    {
+        LoadVolume();
     }
 
     public void PlaySound(AudioClip _sound)
@@ -33,29 +43,5 @@ public class SFXManager : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(_sound, position);
         }        
-    }
-
-    public void ChangeSoundVolume(float _change)
-    {
-        //ChangeSourceVolume(1, "soundVolume", _change, soundSource);
-    }
-
-    private void ChangeSourceVolume(float baseVolume, string volumeName, float _change, AudioSource source)
-    {
-        float currentValue = PlayerPrefs.GetFloat(volumeName, 1);
-        currentValue += _change;
-
-        if (currentValue > 1) {
-            currentValue = 0;
-        } else if (currentValue < 0)
-        {
-            currentValue = 1;
-        }
-        currentValue = Mathf.Clamp(currentValue, 0, 1);
-
-        source.volume = currentValue * baseVolume;
-
-        PlayerPrefs.SetFloat(volumeName, currentValue);
-
     }
 }

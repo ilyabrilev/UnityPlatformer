@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class MusicManager : MonoBehaviour
+public class MusicManager : AbstractAudioManager
 {
     public static MusicManager instance { get; private set; }
 
     [SerializeField] private MusicLibrary musicLibrary;
     [SerializeField] private AudioSource musicSource;
-    private float userVolume;
+
+    public override string SettingName
+    {
+        get
+        {
+            return "MusicVolume";
+        }
+    }
 
     private void Awake()
     {
@@ -22,8 +30,18 @@ public class MusicManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Start()
+    {
+        LoadVolume();
+    }
+
     public void PlayMusic(string trackName, float fadeInDuration = 0.5f, float fadeOutDuration = 0.5f)
     {
+        if (!isLoaded)
+        {
+            LoadVolume();
+        }
         StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeInDuration, fadeOutDuration));
     }
 

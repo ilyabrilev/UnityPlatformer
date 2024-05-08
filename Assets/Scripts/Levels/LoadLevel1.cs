@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadLevel1 : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         MusicManager.instance.PlayMusic("Dragon Castle", 2, 2);
     }
